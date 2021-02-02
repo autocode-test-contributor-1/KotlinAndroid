@@ -4,5 +4,5 @@
     <string name="divide">Divide</string>
     <string name="multiply">Multiply</string>
     <string name="subtract">Subtract</string>
-    <string name="resultText">Result is: </string>
+    <string name="resultText">Result is:</string>
 </resources>

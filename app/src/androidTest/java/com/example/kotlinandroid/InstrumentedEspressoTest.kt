@@ -24,7 +24,7 @@ import org.junit.runner.RunWith
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 @RunWith(AndroidJUnit4ClassRunner::class)
-class ExampleInstrumentedTest {
+class InstrumentedEspressoTest {
     @get:Rule
     var activityScenarioRule = activityScenarioRule<MainActivity>()
 
@@ -40,16 +40,17 @@ class ExampleInstrumentedTest {
         onView(withText("Result is:")).check(matches(isDisplayed()))
     }
 
-
     @Test
-    fun espressoTest() {
+    fun espressoTestAddButton() {
         val originalText = getText(withId(R.id.resultView))
         onView(withId(R.id.firstNumber)).perform(clearText(), typeText("2"))
+        onView(withId(R.id.secondNumber)).perform(clearText(), typeText("2"))
         onView(withId(R.id.addButton)).perform(click())
         assertNotEquals(originalText, getText(withId(R.id.resultView)))
+        assertEquals("Result is: 4.0", getText(withId(R.id.resultView)))
     }
 
-    fun getText(matcher: Matcher<View?>?): String? {
+    private fun getText(matcher: Matcher<View?>?): String? {
         val stringHolder = arrayOf<String?>(null)
         onView(matcher).perform(object : ViewAction {
             override fun getConstraints(): Matcher<View> {
