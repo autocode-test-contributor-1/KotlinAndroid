@@ -10,7 +10,6 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
-import androidx.test.platform.app.InstrumentationRegistry
 import org.hamcrest.Matcher
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotEquals
@@ -27,13 +26,6 @@ import org.junit.runner.RunWith
 class InstrumentedEspressoTest {
     @get:Rule
     var activityScenarioRule = activityScenarioRule<MainActivity>()
-
-    @Test
-    fun useAppContext() {
-        // Context of the app under test.
-        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.example.kotlinandroid", appContext.packageName)
-    }
 
     @Test
     fun espressoTestResultIsDisplayed() {
